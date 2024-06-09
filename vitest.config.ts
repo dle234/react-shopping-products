@@ -6,6 +6,7 @@ import viteConfig from './vite.config.ts';
 export default mergeConfig(
   viteConfig,
   defineConfig({
+    base: '/react-shopping-products/dist',
     test: {
       globals: true,
       environment: 'jsdom',
