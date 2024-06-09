@@ -1,8 +1,6 @@
 import { PropsWithChildren, RefObject, useEffect } from 'react';
 
 interface InfinityScrollProp {
-  isLoading: boolean;
-  isError?: boolean;
   fetchNextPage: () => void;
   bottomRef: RefObject<HTMLDivElement>;
   isFetching: boolean;
@@ -12,8 +10,7 @@ interface InfinityScrollProp {
 const InfinityScrollContainer = ({
   isFetching,
   hasNextPage,
-  isLoading,
-  isError,
+
   fetchNextPage,
   bottomRef,
   children,

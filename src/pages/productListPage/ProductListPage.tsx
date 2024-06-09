@@ -32,7 +32,6 @@ const ProductListPage = () => {
 
   return (
     <InfinityScrollContainer
-      isLoading={isLoading}
       fetchNextPage={fetchNextPage}
       hasNextPage={hasNextPage}
       isFetching={isFetching}
