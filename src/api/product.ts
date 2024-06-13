@@ -1,3 +1,4 @@
+import { ERROR_MESSAGE } from '@/constants/message';
 import { END_POINT } from './endpoints';
 import fetcher from './fetcher';
 
@@ -24,7 +25,7 @@ export const fetchProductList = async ({
 }: FetchProductListProps): Promise<ProductResponse> => {
   const response = await fetcher.get({
     url: convertUrlFormat({ category, page, size, sortOptions }),
-    errorMessage: '상품 리스트 불러오기에 실패했습니다🥹',
+    errorMessage: ERROR_MESSAGE.PRODUCT_ITEM.GET,
   });
 
   const data = await response.json();

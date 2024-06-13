@@ -1,0 +1,139 @@
+{
+  "content": [
+    {
+      "id": 10938,
+      "quantity": 1,
+      "product": {
+        "id": 169,
+        "name": "세라믹 주전자",
+        "price": 90000,
+        "imageUrl": "https://plus.unsplash.com/premium_photo-1664372599576-ea88152cda2b?q=80&w=3538&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "category": "kitchen"
+      }
+    },
+    {
+      "id": 12136,
+      "quantity": 1,
+      "product": {
+        "id": 81,
+        "name": "믹서볼",
+        "price": 25000,
+        "imageUrl": "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?q=80&w=3264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "category": "kitchen"
+      }
+    },
+    {
+      "id": 12415,
+      "quantity": 1,
+      "product": {
+        "id": 153,
+        "name": "고속 충전기",
+        "price": 50000,
+        "imageUrl": "https://images.unsplash.com/photo-1695073621086-aa692bc32a3d?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "category": "electronics"
+      }
+    },
+    {
+      "id": 15044,
+      "quantity": 1,
+      "product": {
+        "id": 132,
+        "name": "철학논문",
+        "price": 11000,
+        "imageUrl": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "category": "books"
+      }
+    },
+    {
+      "id": 15490,
+      "quantity": 15,
+      "product": {
+        "id": 114,
+        "name": "스릴러소설",
+        "price": 9000,
+        "imageUrl": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=2730&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "category": "books"
+      }
+    },
+    {
+      "id": 15527,
+      "quantity": 8,
+      "product": {
+        "id": 129,
+        "name": "고전소설",
+        "price": 8000,
+        "imageUrl": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=2730&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "category": "books"
+      }
+    },
+    {
+      "id": 15537,
+      "quantity": 19,
+      "product": {
+        "id": 110,
+        "name": "판타지소설",
+        "price": 6000,
+        "imageUrl": "https://plus.unsplash.com/premium_photo-1667251760504-096946b820af?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "category": "books"
+      }
+    },
+    {
+      "id": 15722,
+      "quantity": 4,
+      "product": {
+        "id": 210,
+        "name": "버건디",
+        "price": 8000,
+        "imageUrl": "https://emoji.slack-edge.com/TFELTJB7V/%25EB%25B2%2584%25EA%25B1%25B4%25EB%2594%2594_%25EC%25B4%2588%25EC%2583%2581%25ED%2599%2594_ver2/b3264a2acbbf210a.png",
+        "category": "fashion"
+      }
+    },
+    {
+      "id": 15743,
+      "quantity": 1,
+      "product": {
+        "id": 34,
+        "name": "코카콜라",
+        "price": 10000,
+        "imageUrl": "https://godomall.speedycdn.net/1cd80571a779bf8f2c08a18dc0965949/goods/1000000027/image/detail/1000000027_detail_012.jpg",
+        "category": "beverage"
+      }
+    },
+    {
+      "id": 16412,
+      "quantity": 1,
+      "product": {
+        "id": 209,
+        "name": "string",
+        "price": 0,
+        "imageUrl": "string",
+        "category": "string"
+      }
+    }
+  ],
+  "pageable": {
+    "sort": {
+      "sorted": false,
+      "unsorted": true,
+      "empty": true
+    },
+    "pageNumber": 0,
+    "pageSize": 20,
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  },
+  "last": true,
+  "totalPages": 1,
+  "totalElements": 10,
+  "sort": {
+    "sorted": false,
+    "unsorted": true,
+    "empty": true
+  },
+  "first": true,
+  "number": 0,
+  "numberOfElements": 10,
+  "size": 20,
+  "empty": false
+}

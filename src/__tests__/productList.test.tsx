@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { renderHook, waitFor } from '@testing-library/react';
 import { act } from 'react';
-
 import { PRODUCT_DATA_SIZE } from '@/constants/productData';
 
 import useProductList from '@/hooks/useProductList';
@@ -15,19 +14,19 @@ describe('productList', () => {
     queryClient.clear();
   });
   describe('pagination 테스트', () => {
-    it(`첫 페이지에서는 ${PRODUCT_DATA_SIZE.firstPage}개의 상품 목록을 불러와야 한다.`, async () => {
+    it(`첫 페이지에서는 ${PRODUCT_DATA_SIZE.FIRST_PAGE}개의 상품 목록을 불러와야 한다.`, async () => {
       const { result } = renderHook(() => useProductList(), { wrapper });
 
       await waitFor(() => {
-        expect(result.current.productList).toHaveLength(PRODUCT_DATA_SIZE.firstPage);
+        expect(result.current.productList).toHaveLength(PRODUCT_DATA_SIZE.FIRST_PAGE);
       });
     });
 
-    it(`다음 페이지에서는 ${PRODUCT_DATA_SIZE.nextPage}개의 상품 목록을 추가로 불러와야 한다.`, async () => {
+    it(`다음 페이지에서는 ${PRODUCT_DATA_SIZE.NEXT_PAGE}개의 상품 목록을 추가로 불러와야 한다.`, async () => {
       const { result } = renderHook(() => useProductList(), { wrapper });
 
       await waitFor(() => {
-        expect(result.current.productList).toHaveLength(PRODUCT_DATA_SIZE.firstPage);
+        expect(result.current.productList).toHaveLength(PRODUCT_DATA_SIZE.FIRST_PAGE);
       });
 
       act(() => {
@@ -36,7 +35,7 @@ describe('productList', () => {
 
       await waitFor(() => {
         expect(result.current.productList).toHaveLength(
-          PRODUCT_DATA_SIZE.firstPage + PRODUCT_DATA_SIZE.nextPage,
+          PRODUCT_DATA_SIZE.FIRST_PAGE + PRODUCT_DATA_SIZE.NEXT_PAGE,
         );
       });
     });
@@ -44,7 +43,7 @@ describe('productList', () => {
       const { result } = renderHook(() => useProductList(), { wrapper });
 
       await waitFor(() => {
-        expect(result.current.productList.length).toBe(PRODUCT_DATA_SIZE.firstPage);
+        expect(result.current.productList.length).toBe(PRODUCT_DATA_SIZE.FIRST_PAGE);
       });
 
       for (let page = 2; page < 5; page += 1) {
@@ -53,7 +52,7 @@ describe('productList', () => {
         });
 
         const expectedProductsCount =
-          PRODUCT_DATA_SIZE.firstPage + (page - 1) * PRODUCT_DATA_SIZE.nextPage;
+          PRODUCT_DATA_SIZE.FIRST_PAGE + (page - 1) * PRODUCT_DATA_SIZE.NEXT_PAGE;
 
         await waitFor(() => {
           expect(result.current.productList).toHaveLength(expectedProductsCount);

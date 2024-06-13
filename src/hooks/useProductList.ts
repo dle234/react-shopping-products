@@ -10,11 +10,11 @@ const useProductList = () => {
   const { category, order, handleChangeCategory, handleChangeSort } = useProductFilter();
 
   const getDataSize = (page: number) =>
-    page === 0 ? PRODUCT_DATA_SIZE.firstPage : PRODUCT_DATA_SIZE.nextPage;
+    page === 0 ? PRODUCT_DATA_SIZE.FIRST_PAGE : PRODUCT_DATA_SIZE.NEXT_PAGE;
 
   const { data, isFetching, fetchNextPage, hasNextPage, isLoading } =
     useInfiniteQuery<ProductResponse>({
-      queryKey: ['fetchProductList', { category, order }],
+      queryKey: ['fetchProductList', category, order],
       queryFn: ({ pageParam }) =>
         fetchProductList({
           page: pageParam as number,
@@ -28,6 +28,7 @@ const useProductList = () => {
         return currentPage.last ? null : nextPage;
       },
       retry: 3,
+      staleTime: 5000 * 60,
     });
 
   const productList = data?.pages.flatMap((page) => page.content) || [];

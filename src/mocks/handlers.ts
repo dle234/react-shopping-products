@@ -6,6 +6,11 @@ import productList from './products.json';
 import { END_POINT } from '@/api/endpoints';
 import { PRODUCT_DATA_SIZE } from '@/constants/productData';
 
+interface CartItemParams {
+  productId: number;
+  quantity: number;
+}
+
 export const handlers = [
   http.get(END_POINT.products, ({ request }) => {
     const url = new URL(request.url);
@@ -13,7 +18,7 @@ export const handlers = [
     const page = Number(url.searchParams.get('page')) || 0;
     const limit = Number(url.searchParams.get('size'));
     const start =
-      page === 0 ? 0 : (page - 5) * PRODUCT_DATA_SIZE.nextPage + PRODUCT_DATA_SIZE.firstPage;
+      page === 0 ? 0 : (page - 5) * PRODUCT_DATA_SIZE.NEXT_PAGE + PRODUCT_DATA_SIZE.FIRST_PAGE;
     const end = start + limit;
     const content = productList.content.slice(start, end);
 
@@ -33,7 +38,7 @@ export const handlers = [
   }),
 
   http.post(END_POINT.cartItems, async ({ request }) => {
-    const response = (await request.json()) as { productId: number; quantity: number };
+    const response = (await request.json()) as CartItemParams;
     const { productId, quantity } = response;
 
     const newCartItem = {
@@ -52,8 +57,9 @@ export const handlers = [
 
     return HttpResponse.json(null, { status: 201 });
   }),
+
   http.post(END_POINT.cartItems, async ({ request }) => {
-    const response = (await request.json()) as { productId: number; quantity: number };
+    const response = (await request.json()) as CartItemParams;
     const { productId, quantity } = response;
 
     const newCartItem = {

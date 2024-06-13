@@ -17,7 +17,7 @@ const CartItemList = () => {
             productName={cartItem.product.name}
             productPrice={cartItem.product.price}
             deleteCartItem={deleteCartItemMutation}
-          ></CartItem>
+          />
         );
       })}
 

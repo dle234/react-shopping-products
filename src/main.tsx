@@ -6,7 +6,7 @@ import App from './App.tsx';
 import GlobalStyle from './GlobalStyle.tsx';
 import theme from './theme.ts';
 import { ToastProvider } from './components/common/toast/Toast.tsx';
-import ErrorHandler from './components/error/ErrorHandler.tsx';
+import QuerySetupProvider from './components/querySetupProvider/QuerySetupProvider.tsx';
 
 // async function enableMocking() {
 //   if (process.env.NODE_ENV !== 'development') {
@@ -24,10 +24,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <ToastProvider>
-        <ErrorHandler>
+        <QuerySetupProvider>
           <GlobalStyle />
           <App />
-        </ErrorHandler>
+        </QuerySetupProvider>
       </ToastProvider>
     </ThemeProvider>
   </React.StrictMode>,

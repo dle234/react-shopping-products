@@ -2,6 +2,8 @@ import { ThemeProvider } from '@emotion/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { renderHook, waitFor } from '@testing-library/react';
 import { act } from 'react';
+import cartItemList from '../mocks/cartItems.json';
+import cartItemListReset from '../mocks/cartItemsReset.json';
 
 import { ToastProvider } from '@/components/common/toast/Toast';
 import theme from '@/theme';
@@ -22,85 +24,84 @@ describe('cartItemList', () => {
   });
   afterEach(() => {
     queryClient.clear();
+    cartItemList.content = cartItemListReset.content;
   });
+  const testProductId = 169;
+  const prevCartItemListLength = 10;
 
   describe('장바구니에 상품 추가 테스트', async () => {
     it(`상품을 장바구니에 담으면 장바구니 전체 수량이 1 증가한다.`, async () => {
-      const productId = 81;
       const { result } = renderHook(() => useCartItemList(), { wrapper });
       await waitFor(() => {
-        expect(result.current.cartItemList).toHaveLength(10);
+        expect(result.current.cartItemList).toHaveLength(prevCartItemListLength);
       });
 
       await waitFor(async () => {
         act(() => {
-          result.current.addCartItemMutation(productId);
+          result.current.addCartItemMutation(testProductId);
         });
       });
 
       await waitFor(() => {
-        expect(result.current.cartItemList).toHaveLength(11);
+        expect(result.current.cartItemList).toHaveLength(prevCartItemListLength + 1);
       });
     });
     it(`상품을 장바구니에 담으면 해당 상품이 장바구니에 추가된다.`, async () => {
-      const productId = 81;
       const { result } = renderHook(() => useCartItemList(), { wrapper });
 
       await waitFor(async () => {
         act(() => {
-          result.current.addCartItemMutation(productId);
+          result.current.addCartItemMutation(testProductId);
         });
       });
 
       await waitFor(() => {
-        expect(result.current.matchCartItem(productId)).toBeTruthy;
+        expect(result.current.matchCartItem(testProductId)).toBeTruthy;
       });
     });
   });
   describe('장바구니 수량 삭제 테스트', () => {
     it(`상품을 장바구니서 삭제하면 장바구니 전체 수량이 1 감소한다.`, async () => {
-      const cartItemId = 15527;
+      const deleteCartItemId = 15527;
 
       const { result } = renderHook(() => useCartItemList(), { wrapper });
       await waitFor(() => {
-        expect(result.current.cartItemList).toHaveLength(11);
+        expect(result.current.cartItemList).toHaveLength(prevCartItemListLength);
       });
 
       await waitFor(async () => {
         act(() => {
-          result.current.deleteCartItemMutation(cartItemId);
+          result.current.deleteCartItemMutation(deleteCartItemId);
         });
       });
       await waitFor(() => {
-        expect(result.current.cartItemList).toHaveLength(10);
+        expect(result.current.cartItemList).toHaveLength(prevCartItemListLength - 1);
       });
     });
   });
 
   describe('장바구니 상품 수량 조절 테스트', () => {
     it(`장바구니에 담긴 상품의 수량을 10으로 변경할 수 있다.`, async () => {
-      const productId = 169;
-      const cartItemId = 10938;
+      const adjustCartItemId = 10938;
+
       const { result } = renderHook(() => useCartItemList(), { wrapper });
       await waitFor(() => {
-        expect(result.current.cartItemList).toHaveLength(10);
+        expect(result.current.cartItemList).toHaveLength(prevCartItemListLength);
       });
 
       await waitFor(async () => {
         act(() => {
-          result.current.adjustCartItemQuantityMutation({ cartItemId: cartItemId, quantity: 10 });
+          result.current.adjustCartItemQuantityMutation({
+            cartItemId: adjustCartItemId,
+            quantity: 10,
+          });
         });
       });
 
       await waitFor(() => {
-        const quantity = result.current.getCartItemQuantity(productId);
+        const quantity = result.current.getCartItemQuantity(testProductId);
         expect(quantity).toBe(10);
       });
     });
   });
 });
-
-//TODO: 테스트 목록
-//1. 담기 버튼 클릭 시 장바구니 수량 증가
-//2. + 버튼 시 수량 증가, - 버튼 시 수량 감소
-//3. 총 결제 금액 확인(리셋 후 몇개 담아서 총 결제금액 확인)

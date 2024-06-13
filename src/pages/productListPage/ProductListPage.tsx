@@ -26,7 +26,7 @@ const ProductListPage = () => {
     category,
     hasNextPage,
   } = useProductList();
-  const { cartItemList } = useCartItemList();
+  const { cartItemList, addCartItemMutation, matchCartItem } = useCartItemList();
   const bottomRef = useRef<HTMLDivElement>(null);
   const { modalOpen, openModal, closeModal } = useModalHandler();
 
@@ -55,6 +55,9 @@ const ProductListPage = () => {
             isFetching={isFetching}
             productList={productList}
             isLoading={isLoading}
+            cartItemList={cartItemList}
+            addCartItemMutation={addCartItemMutation}
+            matchCartItem={matchCartItem}
           />
 
           <div ref={bottomRef} style={{ height: 100 }}></div>
